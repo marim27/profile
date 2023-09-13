@@ -1,24 +1,41 @@
-import logo from './logo.svg';
+import { Route, Routes } from 'react-router-dom';
 import './App.css';
+import Home from './pages/home/home';
+import AboutUs from './pages/aboutus/aboutUs';
+import ContactUs from './pages/contactus/contactUs';
+import SinglePage from './pages/singlePage/singlePage';
+import Header from './Components/Header/header';
+import Footer from './Components/Footer/footer';
+import Project from './Components/project/project';
+import NotFound from './pages/not_found/notFound';
+import LogIn from './Components/login/logIn';
+import Register from './Components/register/register';
+
+
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+  return (<>
+  <div className="container mt-5">
+  <Header/>
+<Routes>
+<Route path="/" element={<Home/>}></Route>
+<Route path="/project" element={<Project/>}></Route>
+<Route path="/about" element={<AboutUs/>}></Route>
+ {/* nested routes */}
+<Route path="/contact" element={<ContactUs/>}>
+
+  <Route index element={<LogIn/>}/>
+  <Route Route path="login" element={<LogIn/>}/>
+  <Route Route path="register" element={<Register/>}/>
+</Route>
+
+<Route path="/details/:id" element={<SinglePage/>}></Route>
+<Route path="*" element={<NotFound/>}></Route>
+
+</Routes>
+<Footer/>
+  </div>
+    </>
   );
 }
 

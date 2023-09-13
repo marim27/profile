@@ -1,0 +1,7 @@
+#darkImg{
+    background: url("../../../public/images/dark.jpeg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    min-height: 20rem;
+    border-radius: 1%;
+}
